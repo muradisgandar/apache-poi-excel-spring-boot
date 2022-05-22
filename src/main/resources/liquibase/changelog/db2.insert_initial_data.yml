@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: db2.insert_initial_custom_fields
+      author: Murad Isgandarli
+      description: "insert initial data"
+      changes:
+        - sql:
+            sql: INSERT INTO customers(id,phone,customer_code,pin) VALUES(1,'+9941234567','SPOQIH56','ERTG89');
+        - sql:
+            sql: INSERT INTO customers(id,phone,customer_code,pin) VALUES(2,'+9945089786345','QWERTT','POINN45');
+        - sql:
+            sql: INSERT INTO customers(id,phone,customer_code,pin) VALUES(3,'+98745982','GITIJEID','KOJDNC90');
+        - sql:
+            sql: INSERT INTO customers(id,phone,customer_code,pin) VALUES(4,'+945679823','POLIJUTG','DTUNBH56');

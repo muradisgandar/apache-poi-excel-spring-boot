@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: db1.initialize_database_models
+      author: Murad Isgandarli
+      description: "initialize_database_models"
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: int
+                  autoIncrement: true
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone
+                  type: VARCHAR(20)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: customer_code
+                  type: VARCHAR(20)
+              - column:
+                  name: pin
+                  type: VARCHAR(10)
+            tableName: customers
+
