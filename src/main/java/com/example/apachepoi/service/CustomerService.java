@@ -31,9 +31,13 @@ public class CustomerService {
         this.fileService = fileService;
     }
 
-    @Scheduled(cron = "0 0/3 * * * ?")
+    /**
+     * For making cron jobs timing
+     * @link https://www.freeformatter.com/cron-expression-generator-quartz.html
+     */
+    @Scheduled(cron = "0 0/10 * * * ?") // At second :00, every 10 minutes starting at minute :00, of every hour
     @SchedulerLock(name = "TaskScheduler_processNewCustomer",
-            lockAtMostFor = "15M", lockAtLeastFor = "5M")
+            lockAtMostFor = "15M", lockAtLeastFor = "5M")// locks at least 5 minutes(normally), at most 15 minutes(for disaster cases)
     public void processNewCustomer() {
         log.info("processNewCustomer job started");
         LastFetchedCustomerEntity lastFetchedCustomer = lastFetchedCustomerRepo.getLastFetchedCustomer();
