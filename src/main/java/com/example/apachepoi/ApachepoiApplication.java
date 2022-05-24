@@ -19,6 +19,6 @@ public class ApachepoiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-		customerService.getEncodedCustomerExcelFile();
+//		customerService.getEncodedCustomerExcelFile();
 	}
 }

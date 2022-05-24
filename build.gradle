@@ -21,7 +21,8 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
 	implementation group: 'commons-io', name: 'commons-io', version: '2.7'
-
+	implementation 'net.javacrumbs.shedlock:shedlock-spring:4.34.0'
+	implementation 'net.javacrumbs.shedlock:shedlock-provider-jdbc-template:4.34.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

@@ -27,4 +27,35 @@ databaseChangeLog:
                   name: pin
                   type: VARCHAR(10)
             tableName: customers
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: customer_id
+                  type: int
+            tableName: last_fetched_customer
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: true
+                    primaryKey: true
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: lock_until
+                  type: TIMESTAMP(3)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: locked_at
+                  type: TIMESTAMP(3)
+              - column:
+                  name: locked_by
+                  type: VARCHAR(255)
+            tableName: shedlock
 

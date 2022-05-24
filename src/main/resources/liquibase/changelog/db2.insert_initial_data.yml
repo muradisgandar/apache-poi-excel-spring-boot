@@ -12,3 +12,13 @@ databaseChangeLog:
             sql: INSERT INTO customers(id,phone,customer_code,pin) VALUES(3,'+98745982','GITIJEID','KOJDNC90');
         - sql:
             sql: INSERT INTO customers(id,phone,customer_code,pin) VALUES(4,'+945679823','POLIJUTG','DTUNBH56');
+        - sql:
+            sql: INSERT INTO customers(id,phone,customer_code,pin) VALUES(5,'+9456756723','POertyiw','gieiei45');
+        - sql:
+            sql: INSERT INTO customers(id,phone,customer_code,pin) VALUES(6,'+945901223','Pqwerrrt','DTrttBH59');
+        - sql:
+            sql: INSERT INTO customers(id,phone,customer_code,pin) VALUES(8,'+944566673','POLtyttuG','DT3455u6');
+        - sql:
+            sql: INSERT INTO customers(id,phone,customer_code,pin) VALUES(9,'++1233444','ewiorwoir','DT3455u6');
+        - sql:
+            sql: INSERT INTO customers(id,phone,customer_code,pin) VALUES(10,'+944566673','POLtyttuG','DT3455u6');
