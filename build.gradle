@@ -23,6 +23,8 @@ dependencies {
 	implementation group: 'commons-io', name: 'commons-io', version: '2.7'
 	implementation 'net.javacrumbs.shedlock:shedlock-spring:4.34.0'
 	implementation 'net.javacrumbs.shedlock:shedlock-provider-jdbc-template:4.34.0'
+	implementation "net.logstash.logback:logstash-logback-encoder:6.0"
+	implementation 'ch.qos.logback:logback-classic'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

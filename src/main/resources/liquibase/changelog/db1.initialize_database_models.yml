@@ -35,6 +35,11 @@ databaseChangeLog:
                     primaryKey: true
                   name: customer_id
                   type: int
+              - column:
+                  constraints:
+                    nullable: true
+                  name: last_processed
+                  type: timestamp(6)
             tableName: last_fetched_customer
         - createTable:
             columns:

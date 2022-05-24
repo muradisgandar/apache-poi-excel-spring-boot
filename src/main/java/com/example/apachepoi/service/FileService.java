@@ -1,5 +1,7 @@
 package com.example.apachepoi.service;
 
+import static net.logstash.logback.argument.StructuredArguments.kv;
+
 import com.example.apachepoi.entity.CustomerEntity;
 import com.example.apachepoi.util.FileUtil;
 import java.util.List;
@@ -10,16 +12,11 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class FileService {
 
-    private final FileUtil fileUtil;
-
-    public FileService(FileUtil fileUtil) {
-        this.fileUtil = fileUtil;
-    }
-
     public void getEncodedCustomerExcelFile(List<CustomerEntity> customers) {
-        log.info("excel generating");
+        FileUtil fileUtil = new FileUtil();
+        log.info("getEncodedCustomerExcelFile started");
         String encodedFile = fileUtil.encodeExcelFileToBase64(customers);
-        log.info("encodedUrl: " + encodedFile);
+        log.info("getEncodedCustomerExcelFile completed successfully, {}", kv("encodedFile", encodedFile));
         fileUtil.decodeBase64ToExcelFile(encodedFile);
     }
 }

@@ -1,5 +1,7 @@
 package com.example.apachepoi.util;
 
+import static net.logstash.logback.argument.StructuredArguments.kv;
+
 import com.example.apachepoi.entity.CustomerEntity;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -14,6 +16,7 @@ import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -24,7 +27,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
 
-@Component
+@Slf4j
 public class FileUtil {
 
     private final XSSFWorkbook workbook;
@@ -105,6 +108,7 @@ public class FileUtil {
     }
 
     public void decodeBase64ToExcelFile(String base64EncodedFile) {
+        log.info("decodeBase64ToExcelFile started, {}", kv("base64EncodedFile", base64EncodedFile));
         InputStream is = new ByteArrayInputStream(Base64.getDecoder().decode(base64EncodedFile.getBytes(StandardCharsets.UTF_8)));
         File file = new File("src/main/resources/Customers.xlsx");
         try(OutputStream outputStream = new FileOutputStream(file)){
