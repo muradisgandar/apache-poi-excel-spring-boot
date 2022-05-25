@@ -90,7 +90,7 @@ public class FileUtil {
 
     }
 
-    public String encodeExcelFileToBase64(List<CustomerEntity> customerEntities) {
+    public String encodeExcelFileToBase64(List<CustomerEntity> customerEntities) throws IOException {
         writeHeaderLine();
         writeDataLines(customerEntities);
 //        try (FileOutputStream outputStream = new FileOutputStream("Orders.xlsx")) {
@@ -99,11 +99,7 @@ public class FileUtil {
 //            throw new RuntimeException(e);
 //        }
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        try {
-            workbook.write(bos);
-        } catch(Exception e){
-            e.printStackTrace();
-        }
+        workbook.write(bos);
         return Base64.getEncoder().encodeToString(bos.toByteArray());
     }
 

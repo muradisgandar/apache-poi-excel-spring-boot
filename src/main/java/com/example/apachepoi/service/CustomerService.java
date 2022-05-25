@@ -7,6 +7,7 @@ import com.example.apachepoi.entity.LastFetchedCustomerEntity;
 import com.example.apachepoi.repo.CustomerRepo;
 import com.example.apachepoi.repo.LastFetchedCustomerRepo;
 import com.example.apachepoi.util.FileUtil;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -35,10 +36,10 @@ public class CustomerService {
      * For making cron jobs timing
      * @link https://www.freeformatter.com/cron-expression-generator-quartz.html
      */
-    @Scheduled(cron = "0 0/10 * * * ?") // At second :00, every 10 minutes starting at minute :00, of every hour
-    @SchedulerLock(name = "TaskScheduler_processNewCustomer",
-            lockAtMostFor = "15M", lockAtLeastFor = "5M")// locks at least 5 minutes(normally), at most 15 minutes(for disaster cases)
-    public void processNewCustomer() {
+    @Scheduled(cron = "0 0/2 * * * ?") // At second :00, every 10 minutes starting at minute :00, of every hour
+    @SchedulerLock(name = "TaskScheduler_processNewCustomers",
+            lockAtMostFor = "15M", lockAtLeastFor = "2M")// locks at least 5 minutes(normally), at most 15 minutes(for disaster cases)
+    public void processNewCustomers() throws IOException {
         log.info("processNewCustomer job started");
         LastFetchedCustomerEntity lastFetchedCustomer = lastFetchedCustomerRepo.getLastFetchedCustomer();
         if (Objects.isNull(lastFetchedCustomer)) {
@@ -62,6 +63,6 @@ public class CustomerService {
         newLastCustomer.setLastProcessed(LocalDateTime.now());
         lastFetchedCustomerRepo.save(newLastCustomer);
 
-        log.info("processNewCustomer job executed successfully, {} ", kv("lastCustomerId", lastId));
+        log.info("processNewCustomers job executed successfully, {} ", kv("lastCustomerId", lastId));
     }
 }
