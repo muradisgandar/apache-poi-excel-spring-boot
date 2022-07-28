@@ -39,7 +39,7 @@ public class FileUtil {
 
 
     private void writeHeaderLine() {
-        sheet = workbook.createSheet("Customers");
+        sheet = workbook.createSheet();
 
         Row row = sheet.createRow(0);
 
